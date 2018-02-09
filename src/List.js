@@ -1,31 +1,58 @@
 import React, {Component} from 'react';
-import {Text, TouchableOpacity, View ,StyleSheet, FlatList , ImageBackground} from 'react-native';
+import {Text, TouchableOpacity, View ,StyleSheet, FlatList , ImageBackground, Dimensions} from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import Button from './components/common/Button'
 var background1 = require('./images/background_1_fixed.jpg')
+import Icon from 'react-native-vector-icons/FontAwesome';
+import * as Progress from 'react-native-progress';
+
 class List extends Component{
+
     render(){
         return (
             <View style={styles.container}>
-                {/*Header*/}
-                <View style={styles.header}>
-                    <ImageBackground style={styles.headerImage} source={background1} imageStyle={{resizeMode:'cover'}}>
-                        <View style = {styles.headerImageContent}>
-                            <Text style={styles.headerText}> Topic Vocabularies </Text>
-                            <Text style={styles.headerSubText}> 10 cards </Text>    
+                {/*Body*/}
+                <View style={styles.body}>
+                    <ImageBackground style={{flex:1}} source={background1} imageStyle={{resizeMode:'cover'}}>
+                        <View style = {{flex:1}}>
+                             
+                            {/*Title Section*/}
+                            <View style = {styles.titlePart}>
+                                <Text style={styles.bodyText}> Topic Vocabularies </Text>
+                                <Text style={styles.bodySubText}> English </Text>
+                            </View>    
+
+
+                            <View style={{flex:3 , flexDirection: 'row' }}>
+                                <TouchableOpacity  style ={{flex: 1, flexDirection:'row', justifyContent:'flex-end', marginRight: 18, alignItems:'center'}} onPress= {()=>console.log('a')}>
+                                    <Icon name="cog" size={30} color="#FFF" backgroundColor="transparent" />
+                                    <Text style={{fontFamily:'Ubuntu-Regular', fontSize:15, color:'#FFF'}}>   Edit list card</Text>
+                                </TouchableOpacity>
+                            </View>   
+
+                            {/*Detail Section*/}
+                            <View style = {styles.detailPart}>
+                                <View style = {{flex:1, justifyContent:'center', alignItems:'center'}}>
+                                    <Text style={{color:'#FFF', fontSize:30, fontFamily:'Ubuntu-Bold'}}>10</Text>
+                                    <Text style={{color:'#FFF', fontSize:15, fontFamily:'Ubuntu-Light'}}>Cards</Text>
+                                </View>
+                                <View style = {{flex:1, justifyContent:'center', alignItems:'center'}}>
+                                    <Text style={{color:'#FFF', fontSize:30, fontFamily:'Ubuntu-Bold'}}>10</Text>
+                                    <Text style={{color:'#FFF', fontSize:15, fontFamily:'Ubuntu-Light'}}>Learned</Text>
+                                </View>
+                                <View style = {{flex:1, justifyContent:'center', alignItems:'center'}}>
+                                    <Text style={{color:'#FFF', fontSize:30, fontFamily:'Ubuntu-Bold'}}>0</Text>
+                                    <Text style={{color:'#FFF', fontSize:15, fontFamily:'Ubuntu-Light'}}>Remain</Text>
+                                </View>
+                            </View>    
                         </View>
                     </ImageBackground>
-                </View>
-
-                {/*Contents*/}
-                <View style={styles.contents}>
-                
                 </View>
                 
                 {/*Footer-Button*/}
                 <View style={styles.footer_btn}>
                     <Button
-                        onPress={()=>console.log("a")}
+                        onPress={()=>Actions.detailList()}
                     > 
                     LEARN 
                     </Button>
@@ -42,33 +69,31 @@ const styles = StyleSheet.create({
       flex: 1, 
       justifyContent: 'center',
     },
-    header:{
-        flex: 3,
-    },
-    contents:{
-        flex:7,
-        backgroundColor: '#393939',
+    body:{
+        flex: 11,
     },
     footer_btn:{
-        flex:3/4,
-    },
-    headerImage:{
         flex:1,
     },
-    headerImageContent:{
-        flex:1,
+    bodyText:{
+        fontFamily:'Ubuntu-Bold',
+        fontSize: 35,
+        color: '#FFF'
+    },
+    bodySubText:{
+        fontFamily:'Ubuntu-Light',
+        fontSize: 18,
+        color: '#FFF'
+    },
+    titlePart:{
+        flex:5,
         justifyContent: 'center',
         alignItems: 'center',
     },
-    headerText:{
-        fontFamily:'Ubuntu-BoldItalic',
-        fontSize: 25,
-        color: '#FFF'
+    detailPart:{
+        flex:2,
+        flexDirection:'row',
+        justifyContent:'center',
     },
-    headerSubText:{
-        fontFamily:'Ubuntu-Italic',
-        fontSize: 15,
-        color: '#FFF'
-    }
   })
   
