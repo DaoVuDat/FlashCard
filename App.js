@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Router, Stack, Scene} from 'react-native-router-flux';
 import List from './src/List';
-import DetailList from './src/DetailList';
-import AddCard from './src/AddCard';
+import CustomLearning from './src/CustomLearning';
+import EditCard from './src/EditCard';
 
 export default class FlashCard extends Component {
 
@@ -11,8 +11,8 @@ export default class FlashCard extends Component {
       <Router>
         <Stack key="root">
           <Scene key="list" component={List} hideNavBar = {true}/>
-          <Scene key="detailList" component={DetailList} hideNavBar = {true}/>
-          <Scene key="addCard" component={AddCard} hideNavBar={true}/>
+          <Scene key="editCard" component={EditCard} hideNavBar = {true}/>
+          <Scene key="customLearning" component={CustomLearning} hideNavBar={true}/>
         </Stack>
       </Router>
     );

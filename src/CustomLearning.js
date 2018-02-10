@@ -2,14 +2,14 @@ import React, {Component} from 'react';
 import { View, Text } from 'react-native';
 
 
-class DetailList extends Component {
+class CustomLearning extends Component {
     render(){
         return (
             <View>
-                <Text>Detail List</Text>
+                <Text>Custom Learning</Text>
             </View>
         );
     };
 }
 
-export default DetailList;
+export default CustomLearning;

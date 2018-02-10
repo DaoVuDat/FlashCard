@@ -4,9 +4,12 @@ import {Actions} from 'react-native-router-flux';
 import Button from './components/common/Button'
 var background1 = require('./images/background_1_fixed.jpg')
 import Icon from 'react-native-vector-icons/FontAwesome';
-import * as Progress from 'react-native-progress';
 
 class List extends Component{
+
+    editCard = () => {
+        Actions.editCard();
+    }
 
     render(){
         return (
@@ -23,10 +26,15 @@ class List extends Component{
                             </View>    
 
 
-                            <View style={{flex:3 , flexDirection: 'row' }}>
+                            <View style={{flex:3 }}>
+                                <TouchableOpacity  style ={{flex: 1, flexDirection:'row', justifyContent:'flex-end', marginRight: 18, alignItems:'center'}} onPress= {this.editCard}>
+                                    <Text style={{fontFamily:'Ubuntu-Regular', fontSize:15, color:'#FFF'}}>Edit list card   </Text>
+                                    <Icon name="cog" size={30} color="#FFF" backgroundColor="transparent" />                                   
+                                </TouchableOpacity>
+
                                 <TouchableOpacity  style ={{flex: 1, flexDirection:'row', justifyContent:'flex-end', marginRight: 18, alignItems:'center'}} onPress= {()=>console.log('a')}>
-                                    <Icon name="cog" size={30} color="#FFF" backgroundColor="transparent" />
-                                    <Text style={{fontFamily:'Ubuntu-Regular', fontSize:15, color:'#FFF'}}>   Edit list card</Text>
+                                    <Text style={{fontFamily:'Ubuntu-Regular', fontSize:15, color:'#FFF'}}>Set a plan   </Text>
+                                    <Icon name="calendar" size={30} color="#FFF" backgroundColor="transparent" />
                                 </TouchableOpacity>
                             </View>   
 
@@ -52,7 +60,7 @@ class List extends Component{
                 {/*Footer-Button*/}
                 <View style={styles.footer_btn}>
                     <Button
-                        onPress={()=>Actions.detailList()}
+                        onPress={()=>Actions.customLearning()}
                     > 
                     LEARN 
                     </Button>
