@@ -12,49 +12,49 @@ const dataSource =[
     key:"1",
     en:"Hello",
     sentence:"Hello. How are you?",
-    vn:"Xin chao",
+    vn:"Xin chào",
   },
   {
     key:"2",
     en:"Hi",
     sentence:"Hi. How are you?",
-    vn:"Xin chao",
+    vn:"Xin chào",
   },
   {
     key:"3",
     en:"Fine",
     sentence:"I am fine",
-    vn:"Tot",
+    vn:"Tốt",
   },
   {
     key:"4",
     en:"Good",
     sentence:"I am good",
-    vn:"Gioi",
+    vn:"Giỏi",
   },
   {
     key:"5",
     en:"Bad",
     sentence:"I am bad",
-    vn:"Te",
+    vn:"Xấu",
   },
   {
     key:"6",
     en:"Go",
     sentence:"I go to school",
-    vn:"Di",
+    vn:"Đi",
   },
   {
     key:"7",
     en:"Fastest",
     sentence:"I am the fastest man alive. I am the flash. I am the fastest man alive. I am the flash",
-    vn:"Nhanh nhat",
+    vn:"Nhanh nhất",
   },
   {
     key:"8",
     en:"Gun",
     sentence:"I have a really big gun in my pocket",
-    vn:"Sung",
+    vn:"Súng",
   },
 ]
 
@@ -80,10 +80,10 @@ export default class FlashCard extends Component {
       //     <Scene key="customLearning" component={CustomLearning} hideNavBar={true}/>
       //   </Stack>
       // </Router>
-      <View style ={{flex:1, marginTop:22}}>
+      <View style ={{flex:1, paddingTop:20, backgroundColor:"#D8D8D8"}}>
         <FlatList
           data={dataSource}
-          
+          showsHorizontalScrollIndicator={false}
           keyExtractor={this._keyExtractor}
           renderItem={this._renderListItem}
         />
