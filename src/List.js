@@ -21,21 +21,21 @@ class List extends Component{
                              
                             {/*Title Section*/}
                             <View style = {styles.titlePart}>
-                                <Text style={styles.bodyText}> Topic Vocabularies </Text>
+                                <Text style={styles.bodyText}> Infomation Technology </Text>
                                 <Text style={styles.bodySubText}> English </Text>
                             </View>    
 
 
-                            <View style={{flex:3 }}>
-                                <TouchableOpacity  style ={{flex: 1, flexDirection:'row', justifyContent:'flex-end', marginRight: 18, alignItems:'center'}} onPress= {this.editCard}>
-                                    <Text style={{fontFamily:'Ubuntu-Regular', fontSize:15, color:'#FFF'}}>Edit list card   </Text>
-                                    <Icon name="cog" size={30} color="#FFF" backgroundColor="transparent" />                                   
-                                </TouchableOpacity>
+                            <View style={{flex:3 , flexDirection:'column'}}>
 
-                                <TouchableOpacity  style ={{flex: 1, flexDirection:'row', justifyContent:'flex-end', marginRight: 18, alignItems:'center'}} onPress= {()=>console.log('a')}>
-                                    <Text style={{fontFamily:'Ubuntu-Regular', fontSize:15, color:'#FFF'}}>Set a plan   </Text>
-                                    <Icon name="calendar" size={30} color="#FFF" backgroundColor="transparent" />
-                                </TouchableOpacity>
+                                    <TouchableOpacity  style ={{flex: 1, flexDirection:'row',  justifyContent: 'center'}} onPress= {this.editCard}> 
+                                        <Text style={{fontFamily:'Ubuntu-Regular', fontSize:18, color:'#FFF'}}>Edit list card</Text>                                
+                                    </TouchableOpacity>
+
+                                    <TouchableOpacity  style ={{flex: 1, flexDirection:'row',  justifyContent: 'center'}} onPress= {()=>console.log('a')}> 
+                                        <Text style={{fontFamily:'Ubuntu-Regular', fontSize:18, color:'#FFF'}}>Set a plan</Text>
+                                    </TouchableOpacity>
+
                             </View>   
 
                             {/*Detail Section*/}
@@ -85,12 +85,13 @@ const styles = StyleSheet.create({
     },
     bodyText:{
         fontFamily:'Ubuntu-Bold',
-        fontSize: 35,
+        fontSize: 30,
         color: '#FFF'
     },
     bodySubText:{
+        marginTop:10,
         fontFamily:'Ubuntu-Light',
-        fontSize: 18,
+        fontSize: 24,
         color: '#FFF'
     },
     titlePart:{

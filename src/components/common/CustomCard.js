@@ -11,8 +11,9 @@ export default class CustomCard extends Component {
         return(
             <View style ={{flex:1}}>
                 <View style = {styles.container}>
-                <View style = {{flex: 5, alignItems:'center', justifyContent:'center',}}>
+                <View style = {{flex: 6, alignItems:'center', justifyContent:'center',}}>
                     <Text style={styles.textFocus}>{this.props.item.en}</Text>
+                    <Text style={{fontFamily:"Ubuntu-Italic", marginTop:5}}>({this.props.item.type})</Text>
                     <Text style={styles.text}>{this.props.item.vn}</Text>
                 </View>
                 <View style= {{flex: 1, flexDirection:'row', justifyContent:'flex-end', paddingRight:5}}>
@@ -30,7 +31,7 @@ const styles = StyleSheet.create({
         marginLeft:20,
         marginRight:20,
         marginBottom: 10,
-        height: 150,
+        height: 130,
         borderRadius:5,
         backgroundColor:"#FFF",
         shadowColor: '#343434',
@@ -39,12 +40,12 @@ const styles = StyleSheet.create({
         padding: 10
     },
     textFocus:{
-        margin: 15,
-        fontSize: 35,
+        fontSize: 27,
         fontFamily:'Ubuntu-Bold',
+        color: '#4D91BE'
     },
     text:{
-        fontSize: 20,
+        fontSize: 16,
         fontFamily:'Ubuntu-Regular',
     }
 })
