@@ -21,7 +21,7 @@ class List extends Component{
                              
                             {/*Title Section*/}
                             <View style = {styles.titlePart}>
-                                <Text style={styles.bodyText}> Infomation Technology </Text>
+                                <Text style={styles.bodyText}> Information Technology </Text>
                                 <Text style={styles.bodySubText}> English </Text>
                             </View>    
 

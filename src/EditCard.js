@@ -3,6 +3,7 @@ import {View, Text ,StyleSheet, FlatList, TouchableOpacity } from 'react-native'
 import Button from './components/common/Button'
 import CustomCard from './components/common/CustomCard'
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {Actions} from 'react-native-router-flux'
 
 class EditCard extends Component {
 
@@ -36,7 +37,7 @@ class EditCard extends Component {
                 </View>
                 <View style={{flex:1}}>
                     <Button
-                        onPress={()=>Actions.customLearning()}
+                        onPress={()=>Actions.list()}
                     > 
                     SAVE 
                     </Button>

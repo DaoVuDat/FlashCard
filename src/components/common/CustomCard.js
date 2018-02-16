@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 
 export default class CustomCard extends Component {
     constructor(props){
@@ -9,16 +9,19 @@ export default class CustomCard extends Component {
     render(){
         console.log(this.props.item);
         return(
+            
             <View style ={{flex:1}}>
                 <View style = {styles.container}>
-                <View style = {{flex: 6, alignItems:'center', justifyContent:'center',}}>
-                    <Text style={styles.textFocus}>{this.props.item.en}</Text>
-                    <Text style={{fontFamily:"Ubuntu-Italic", marginTop:5}}>({this.props.item.type})</Text>
-                    <Text style={styles.text}>{this.props.item.vn}</Text>
-                </View>
-                <View style= {{flex: 1, flexDirection:'row', justifyContent:'flex-end', paddingRight:5}}>
-                    <Text style ={{fontFamily:'Ubuntu-Light'}}>{this.props.item.key}</Text>
-                </View>
+                    <TouchableOpacity style ={{flex:1}} onPress ={() => {}}>
+                        <View style = {{flex: 6, alignItems:'center', justifyContent:'center',}}>
+                            <Text style={styles.textFocus}>{this.props.item.en}</Text>
+                            <Text style={{fontFamily:"Ubuntu-Italic", marginTop:5}}>({this.props.item.type})</Text>
+                            <Text style={styles.text}>{this.props.item.vn}</Text>
+                        </View>
+                        <View style= {{flex: 1, flexDirection:'row', justifyContent:'flex-end', paddingRight:5}}>
+                            <Text style ={{fontFamily:'Ubuntu-Light'}}>{this.props.item.key}</Text>
+                        </View>
+                    </TouchableOpacity>
                 </View>
             </View>
         )
