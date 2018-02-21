@@ -7,9 +7,7 @@ import data from './data/Data.json'
 const renderPagination = (index, total, context) => {
     return (
       <View style={styles.paginationStyle}>
-        <Text style={{ color: 'grey' }}>
-          <Text style={styles.paginationText}>{index + 1}</Text>/{total}
-        </Text>
+        <Text style={styles.paginationText}>{index + 1}/{total}</Text>
       </View>
     )
   }
@@ -22,16 +20,24 @@ class CustomLearning extends Component {
     renderList(){
         return data.map( (item, index) => {
             return (
-                <CustomCardLearning data ={item} key={index}/>
+                <CustomCardLearning data ={item} key={index} />
             )
         });
     }
 
     render(){
         return (
-            <Swiper  showsButtons={true} loop={false} renderPagination={renderPagination}>
-                {this.renderList()}
-            </Swiper>
+            <View style={{flex:1, backgroundColor:"#D8D8D8"}}>
+                <View style={{flex:1,alignItems:"center",justifyContent:"center"}}>
+                    <Text style={{fontFamily:'Ubuntu-BoldItalic', fontSize: 21,color: '#444444'}}> Information Technology </Text>               
+                </View>
+                <View style={{flex:10}}>
+                    <Swiper  showsButtons={true} loop={false} renderPagination={renderPagination}>
+                        {this.renderList()}
+                    </Swiper>             
+                </View>
+                
+            </View>
         );
     };
 }
@@ -50,13 +56,14 @@ const styles = StyleSheet.create({
       position: 'absolute',
       top: 0, 
       left: 0, 
-      right: 15, 
-      bottom: 15, 
+      right: 10, 
+      bottom: 10, 
       justifyContent: 'flex-end', 
       alignItems: 'flex-end'
       
     },
     paginationText: {
-
+        fontFamily:'Ubuntu-Bold', 
+        fontSize: 13
     }
   })

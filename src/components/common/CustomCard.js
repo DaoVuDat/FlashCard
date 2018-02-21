@@ -6,20 +6,38 @@ export default class CustomCard extends Component {
         super(props);
     }
 
+    renderItem(){
+        return (
+            <View style = {{flex: 6, alignItems:'center', justifyContent:'center',}}>        
+                <Text style={styles.textFocus}>{this.props.item.en}</Text>
+                <Text style={{fontFamily:"Ubuntu-Italic", marginTop:5}}>({this.props.item.meaning[0].type})</Text>
+                <Text style={styles.text}>{this.props.item.meaning[0].vn}</Text>
+                {/* {this.renderMeaning()} */}
+            </View>
+        )
+    }
+
+    // renderMeaning(){
+    //     return(
+    //         this.props.item.meaning.map((item,index)=>{
+    //             return (
+    //                 <View key={index} style = {{alignItems:'center', justifyContent:'center',}}>
+    //                     <Text style={{fontFamily:"Ubuntu-Italic", marginTop:5}}>({item.type})</Text>
+    //                     <Text style={styles.text}>{item.vn}</Text>
+    //                 </View>
+    //             )
+    //         })
+    //     )
+    // }
+
     render(){
-        console.log(this.props.item);
         return(
-            
             <View style ={{flex:1}}>
                 <View style = {styles.container}>
-                    <TouchableOpacity style ={{flex:1}} onPress ={() => {}}>
-                        <View style = {{flex: 6, alignItems:'center', justifyContent:'center',}}>
-                            <Text style={styles.textFocus}>{this.props.item.en}</Text>
-                            <Text style={{fontFamily:"Ubuntu-Italic", marginTop:5}}>({this.props.item.type})</Text>
-                            <Text style={styles.text}>{this.props.item.vn}</Text>
-                        </View>
+                    <TouchableOpacity style ={{flex:1}} onPress ={() => {}}>                           
+                        {this.renderItem()}
                         <View style= {{flex: 1, flexDirection:'row', justifyContent:'flex-end', paddingRight:5}}>
-                            <Text style ={{fontFamily:'Ubuntu-Light'}}>{this.props.item.key}</Text>
+                            <Text style ={{fontFamily:'Ubuntu-Light'}}>{this.props.in+1}</Text>
                         </View>
                     </TouchableOpacity>
                 </View>

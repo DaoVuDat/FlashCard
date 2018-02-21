@@ -10,9 +10,9 @@ class EditCard extends Component {
 
     _keyExtractor = (item, index) => item.key;
 
-    _renderListItem = ({item}) =>{
+    _renderListItem = ({item, index}) =>{
         return (
-        <CustomCard item={item} />
+        <CustomCard item={item} in={index}/>
         )
     }
 

@@ -2,57 +2,78 @@
     {
       "key":"1",
       "en":"abetalipoproteinemia",
-      "sentence":"Hello. How are you?",
-      "vn":"Xin chào",
-      "type":"verb"
+      "meaning":[
+        {
+          "type":"v",
+          "sentence":["Hello. How are you?","Hi. ANC?"],
+          "vn":"xin chào"
+        }
+      ]
     },
     {
       "key":"2",
-      "en":"hi",
-      "sentence":"Hi. How are you?",
-      "vn":"Xin chào",
-      "type":"verb"
+      "en":"asteroid",
+      "meaning":[
+        {
+          "type":"n",
+          "sentence":["Asteriud is a minor planet that moves around the sun.","Astronomers had accidentally caught a comet in the act of turning into an asteroid."],
+          "vn":"hành tính nhỏ"
+        }
+      ]
     },
     {
       "key":"3",
-      "en":"fine",
-      "sentence":"I am fine",
-      "vn":"Tốt",
-      "type":"adjective"
+      "en":"atmostphere",
+      "meaning":[
+        {
+          "type":"n",
+          "sentence":["The atmostphere is a layer of gases surrounding the Earth.","Not so long ago he had been uncomfortable in the atmosphere of the seemingly unbridled physicality of Dunham dancing."],
+          "vn":"môi trường"
+        }
+      ]
     },
     {
       "key":"4",
-      "en":"state-of-the-art",
-      "sentence":"I am good",
-      "vn":"Giỏi",
-      "type":"adjective"
+      "en":"colonize",
+      "meaning":[
+        {
+          "type":"v",
+          "sentence":["India was colonized by the British in the eighteenth century."],
+          "vn":"chiếm làm thuộc địa"
+        }
+      ]
     },
     {
       "key":"5",
-      "en":"telecommunications",
-      "sentence":"I am bad",
-      "vn":"Xấu",
-      "type":"adjective"
+      "en":"commercial",
+      "meaning":[
+        {
+          "type":"adj",
+          "sentence":["Commercial flights from Earth to Mars may be available within 30 years."],
+          "vn":"thuộc làm thương mại"
+        }
+      ]
     },
     {
       "key":"6",
-      "en":"go",
-      "sentence":"I go to school",
-      "vn":"Đi",
-      "type":"verb"
+      "en":"cosmos",
+      "meaning":[
+        {
+          "type":"n",
+          "sentence":["There are plenty of planets in the cosmos besides Earth.","But when change was in focus, the issue became the unifying and dividing forces which applied to the entire cosmos."],
+          "vn":"vũ trụ"
+        }
+      ]
     },
     {
       "key":"7",
-      "en":"fastest",
-      "sentence":"I am the fastest man alive. I am the flash. I am the fastest man alive. I am the flash",
-      "vn":"Nhanh nhất",
-      "type":"adjective"
-    },
-    {
-      "key":"8",
-      "en":"gun",
-      "sentence":"I have a really big gun in my pocket",
-      "vn":"Súng",
-      "type":"noun"
+      "en":"crater",
+      "meaning":[
+        {
+          "type":"n",
+          "sentence":["This crater is the result of a meteorite crash in 1980.","The meteor left a crater over five miles wide.","When the bomb exploded it left a huge crater in the ground."],
+          "vn":"hố"
+        }
+      ]
     }
   ]
