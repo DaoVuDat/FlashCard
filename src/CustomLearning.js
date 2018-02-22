@@ -64,6 +64,6 @@ const styles = StyleSheet.create({
     },
     paginationText: {
         fontFamily:'Ubuntu-Bold', 
-        fontSize: 13
+        fontSize: 12
     }
   })

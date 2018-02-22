@@ -1,17 +1,15 @@
 import React, { Component } from 'react'
 import {View, Text, StyleSheet, ScrollView, TouchableWithoutFeedback, Animated, Easing, LayoutAnimation , UIManager} from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome';
-
-
-const blahBlah = "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc."
-const blahBlah2 = 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.'
-
+import ButtonMark from './ButtonMark'
+import DetailCard from './DetailCard'
 export default class CustomCardLearning extends Component {
     constructor(props){
         super(props);
         this.animatedValue = new Animated.Value(0)
         this.state = {
-            expanded:false
+            expanded:false,
+            click:false
         }
     }
 
@@ -25,26 +23,17 @@ export default class CustomCardLearning extends Component {
     componentDidMount(){
         this.animate();
     }
-
-    // Render The Detail of Flash Card
-    renderDetail() {
-        if(this.state.expanded){
-          return (
-              <Text> {blahBlah2} </Text>
-          );
-        }
-    }
     
     // Render Arrow Icon - Up or Down depending on state expanded
     renderIcon(){
         if(!this.state.expanded){
             return (
-                <Icon name="arrow-down" size={22} color="#343434" backgroundColor="transparent"/>
+                <Icon name="arrow-down" size={20} color="#343434" backgroundColor="transparent"/>
             );
           }
         else {
             return (
-                <Icon name="arrow-up" size={22} color="#343434" backgroundColor="transparent"/>
+                <Icon name="arrow-up" size={20} color="#343434" backgroundColor="transparent"/>
             );
         }
     }
@@ -67,10 +56,44 @@ export default class CustomCardLearning extends Component {
         return(
             this.props.data.meaning[0].sentence.map( (item,index) => {
                 return (
-                    <Text key ={index}>{index +1}. <Text>{item}</Text></Text>
+                    <View key ={index} style={{flexDirection:'row', marginTop:5}}>
+                        <View style={{paddingTop:5}}>
+                            <Icon name="circle" size={8} color="orange" backgroundColor="transparent"/>                     
+                        </View>
+                        <Text style={{fontFamily:'Ubuntu-Italic', fontSize:15, marginLeft:5}}>{item} </Text>
+                    </View>
                 )
             })
         )
+    }
+
+    // Render Button Mark
+    renderButtonMark(){
+        return (
+            <ButtonMark onPress={()=>this.setState({click: !this.state.click})} click={this.state.click}>Mark Learn</ButtonMark>
+        )
+    }
+
+    // Render The Detail of Flash Card
+    renderDetail() {
+        if(this.state.expanded){
+            return (
+                this.props.data.meaning.map( (item, index)=>{
+                    if(index === 0){
+                        return (
+                            <View key={index} style={{margin:5,marginBottom:20 ,padding:10, backgroundColor:'#4577BF', justifyContent:'center', alignItems:'center'}}>
+                                <Text style={{color:'#FFFFFF', fontSize:18}}>{item.vn}</Text>
+                            </View>
+                        )
+                    }
+                    else {
+                        return (
+                            <DetailCard key={index} item={item} in={index} en={this.props.data.en}/>
+                        )
+                    }
+                })
+            );
+        }
     }
 
     render(){
@@ -87,23 +110,22 @@ export default class CustomCardLearning extends Component {
                     <View style ={styles.card}>
                         {/* Render En + Type of the Word - TOP*/}
                         <View style ={styles.containerTop}>
-                            <View style={{flex:10, alignItems:'flex-start', justifyContent:'center'}}>
+                            <View style={{flex:2, alignItems:'flex-start', justifyContent:'center'}}>
                                 <Text style={styles.textEN}>{this.props.data.en}</Text>                            
                             </View>
-                            <View style={{flex:1, alignItems:'flex-end',justifyContent:'center'}}>
-                                <Text style={styles.textVN}>.{this.props.data.meaning[0].type}</Text>                           
+                            <View style={{flex:1, alignItems:'flex-start',justifyContent:'center', paddingLeft:10}}>
+                                <Text style={styles.textVN}>{this.props.data.meaning[0].type} </Text>                           
                             </View>
                         </View>
 
                         {/* Render Example - MID */}
                         <View style ={styles.containerMid}>
-                            <Text>Example: </Text>
                             {this.renderMid()}
                         </View>
 
                         {/* Render Button Mark as learned - BOTTOM */}
-                        <View style ={{flex:1, flexDirection:'row'}}>
-
+                        <View style ={styles.containerBot}>
+                            {this.renderButtonMark()}
                         </View>
                         
                         {/* Render more example and VN meaning */}
@@ -155,20 +177,29 @@ const styles = StyleSheet.create({
     },
     containerTop:{
         flex:2,
-        flexDirection:'row'
     },
     textEN:{
-        fontSize: 24,
+        fontSize: 26,
         fontFamily:'Ubuntu-Bold',
         color: '#4D91BE'
     },
     textVN:{
         fontSize: 12,
-        fontFamily:'Ubuntu-Bold',
+        fontFamily:'Ubuntu-BoldItalic',
     },
     containerMid:{
         flex:1,
         flexDirection:'column', 
         padding:10
+    },
+    example:{
+
+    },
+    containerBot:{
+        flex:1, 
+        flexDirection:'row', 
+        justifyContent:'center', 
+        alignItems:'center', 
+        padding:5
     }
 })
