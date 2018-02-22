@@ -5,8 +5,18 @@ import CustomCard from './components/common/CustomCard'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {Actions} from 'react-native-router-flux'
 import dataSource from './data/Data.json'
-class EditCard extends Component {
+import ModalAdd from './components/common/ModalAdd'
 
+class EditCard extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            isModalVisible: false
+        }
+    }
+
+    _toggleModal = () =>
+    this.setState({ isModalVisible: !this.state.isModalVisible });
 
     _keyExtractor = (item, index) => item.key;
 
@@ -23,7 +33,7 @@ class EditCard extends Component {
                 <View style={{flex:1, flexDirection:'row', justifyContent:'space-between', alignItems:'center', paddingLeft:20, paddingRight: 20}}>
                     <View />
                     <Text style ={styles.midText}> Information Technology </Text>
-                    <TouchableOpacity onPress= {this.editCard}> 
+                    <TouchableOpacity onPress= {this._toggleModal}> 
                         <Icon name="plus" size={20} color="#444444" backgroundColor="transparent" />                                                   
                     </TouchableOpacity>
                 </View> 
@@ -41,6 +51,11 @@ class EditCard extends Component {
                     SAVE 
                     </Button>
                 </View>
+                <ModalAdd 
+                    isVisible={this.state.isModalVisible}
+                    onBackdropPress={() => this.setState({ isVisible: false })}
+                    hide={this._toggleModal}
+                />
             </View>
         );
     };
