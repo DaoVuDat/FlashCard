@@ -1,9 +1,22 @@
 import React, { Component } from 'react';
 import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
-
+import SwipeOut from 'react-native-swipeout'
+import ModalEdit from './ModalEdit'
 export default class CustomCard extends Component {
     constructor(props){
         super(props);
+        this.state={
+            isModalVisible: false,
+        }
+    }
+
+    _toggleModal = () =>
+    this.setState({ isModalVisible: !this.state.isModalVisible });
+
+    deleteItem = (index) => {
+        //this.props parentFLatList ... phai chay truoc khi xoa - neu khong se bao loi set State chi duoc khi component do mount hay mounting
+        this.props.parentFlatList._refreshFlatList(this.props.item.key)
+        this.props.data.splice(index,1);
     }
 
     renderItem(){
@@ -34,13 +47,20 @@ export default class CustomCard extends Component {
         return(
             <View style ={{flex:1}}>
                 <View style = {styles.container}>
-                    <TouchableOpacity style ={{flex:1}} onPress ={() => {}}>                           
+                    <TouchableOpacity style ={{flex:1}} onPress= {this._toggleModal}>                           
                         {this.renderItem()}
                         <View style= {{flex: 1, flexDirection:'row', justifyContent:'flex-end', paddingRight:5}}>
                             <Text style ={{fontFamily:'Ubuntu-Light'}}>{this.props.in+1}</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
+                <ModalEdit 
+                    isVisible={this.state.isModalVisible}
+                    hide={this._toggleModal}
+                    item = {this.props.item}
+                    deleteItem={this.deleteItem}
+                    index = {this.props.in}
+                />
             </View>
         )
     };

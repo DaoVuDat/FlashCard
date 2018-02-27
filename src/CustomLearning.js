@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { View, Text , StyleSheet } from 'react-native';
 import CustomCardLearning from './components/common/CustomCardLearning'
 import Swiper from 'react-native-swiper'
-import data from './data/Data.json'
+import data from './data/Data.js'
 
 const renderPagination = (index, total, context) => {
     return (

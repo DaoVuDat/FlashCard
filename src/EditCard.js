@@ -4,14 +4,15 @@ import Button from './components/common/Button'
 import CustomCard from './components/common/CustomCard'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {Actions} from 'react-native-router-flux'
-import dataSource from './data/Data.json'
+import dataSource from './data/Data.js'
 import ModalAdd from './components/common/ModalAdd'
 
 class EditCard extends Component {
     constructor(props){
         super(props)
         this.state = {
-            isModalVisible: false
+            deletedRowKey: null,
+            isModalVisible: false,
         }
     }
 
@@ -20,13 +21,17 @@ class EditCard extends Component {
 
     _keyExtractor = (item, index) => item.key;
 
-    _renderListItem = ({item, index}) =>{
-        return (
-        <CustomCard item={item} in={index}/>
-        )
-    }
 
+    _refreshFlatList = (deletedKey) => {
+        this.setState( (prevState) => {
+            return {
+                deletedRowKey: deletedKey
+            }
+        })
+    }
     
+
+
     render(){
         return (
             <View style={{flex:1, backgroundColor:"#D8D8D8"}}>
@@ -40,8 +45,14 @@ class EditCard extends Component {
                 <View style ={{flex:10}}>
                     <FlatList
                         data={dataSource}
+                        //extra Data will make flat list re-render depending on deletedRowKey
+                        extraData={this.state.deletedRowKey}
                         keyExtractor={this._keyExtractor}
-                        renderItem={this._renderListItem}
+                        renderItem={({item, index}) =>{
+                            return (
+                            <CustomCard item={item} in={index} data={dataSource} parentFlatList={this}/>
+                            )
+                        }}
                     />
                 </View>
                 <View style={{flex:1}}>
@@ -53,7 +64,6 @@ class EditCard extends Component {
                 </View>
                 <ModalAdd 
                     isVisible={this.state.isModalVisible}
-                    onBackdropPress={() => this.setState({ isVisible: false })}
                     hide={this._toggleModal}
                 />
             </View>

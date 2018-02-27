@@ -4,6 +4,7 @@ import {Actions} from 'react-native-router-flux';
 import Button from './components/common/Button'
 var background1 = require('./images/background_1_fixed.jpg')
 import Icon from 'react-native-vector-icons/FontAwesome';
+import Modal from "react-native-modal";
 
 class List extends Component{
 
@@ -21,8 +22,15 @@ class List extends Component{
                              
                             {/*Title Section*/}
                             <View style = {styles.titlePart}>
-                                <Text style={styles.bodyText}> Information Technology </Text>
-                                <Text style={styles.bodySubText}> English </Text>
+                                <TouchableOpacity
+                                >
+                                    <Text style={styles.bodyText}> Information Technology </Text>
+                                </TouchableOpacity>
+
+                                <TouchableOpacity
+                                >
+                                    <Text style={styles.bodySubText}> English </Text>
+                                </TouchableOpacity>                                
                             </View>    
 
 

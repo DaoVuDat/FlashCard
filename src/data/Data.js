@@ -1,4 +1,4 @@
- [
+var data=  [
     {
       "key":"1",
       "en":"abetalipoproteinemia",
@@ -93,4 +93,6 @@
         }
       ]
     }
-  ]
+  ];
+
+module.exports = data
