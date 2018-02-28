@@ -30,7 +30,11 @@ class EditCard extends Component {
         })
     }
     
-
+    _deleteItem = (index, key) => {
+        //this.props parentFLatList ... phai chay truoc khi xoa - neu khong se bao loi set State chi duoc khi component do mount hay mounting
+        this._refreshFlatList(key)
+        dataSource.splice(index,1);
+    }
 
     render(){
         return (
@@ -50,7 +54,7 @@ class EditCard extends Component {
                         keyExtractor={this._keyExtractor}
                         renderItem={({item, index}) =>{
                             return (
-                            <CustomCard item={item} in={index} data={dataSource} parentFlatList={this}/>
+                            <CustomCard item={item} in={index} parentFlatList={this} deleteItem={this._deleteItem}/>
                             )
                         }}
                     />

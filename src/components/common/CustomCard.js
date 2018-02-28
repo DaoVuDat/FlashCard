@@ -15,8 +15,7 @@ export default class CustomCard extends Component {
 
     deleteItem = (index) => {
         //this.props parentFLatList ... phai chay truoc khi xoa - neu khong se bao loi set State chi duoc khi component do mount hay mounting
-        this.props.parentFlatList._refreshFlatList(this.props.item.key)
-        this.props.data.splice(index,1);
+        this.props.deleteItem(index, this.props.item.key);
     }
 
     renderItem(){
