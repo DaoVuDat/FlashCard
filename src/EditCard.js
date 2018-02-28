@@ -61,16 +61,34 @@ class EditCard extends Component {
         this._refreshFlatList(itemAdding.key)
     }
 
-    _deleteItem = (index, key) => {
-        //this.props parentFLatList ... phai chay truoc khi xoa - neu khong se bao loi set State chi duoc khi component do mount hay mounting
-        this._refreshFlatList(key)
-        dataSource.splice(index,1);
-    }
-
+    // string to array function for _addItem func  
     _stringToArray(str){
         let arrayStr = str.split("\n");
         return arrayStr;
+    }
 
+    // it wont work when restarting the application
+    // more care about when attach with redux
+    _deleteItem = (index, key) => {
+        this._refreshFlatList(key);
+        let dataDeleted = this.state.data;
+        dataDeleted.splice(index,1);
+    }
+
+    _saveItem = (data, key) => {
+        let preData = this.state.data;
+        let foundIndex = preData.findIndex(item => key == item.key);
+        if(foundIndex < 0 ){
+            return
+        }
+        preData[foundIndex].en = data.word;
+        preData[foundIndex].meaning[0].type = data.type;
+        preData[foundIndex].meaning[0].sentence = data.examples;
+        preData[foundIndex].meaning[0].vn = data.meaning;
+        
+        this.setState({
+            data: preData
+        })
     }
 
     componentWillMount(){
@@ -78,6 +96,7 @@ class EditCard extends Component {
             data: dataSource
         })
     }
+
 
     render(){
         return (
@@ -92,12 +111,14 @@ class EditCard extends Component {
                 <View style ={{flex:10}}>
                     <FlatList
                         data={this.state.data}
-                        //extra Data will make flat list re-render depending on deletedRowKey
-                        extraData={this.state.deletedRowKey}
+                        //extra Data will make flat list re-render
+                        extraData={this.state}
                         keyExtractor={this._keyExtractor}
                         renderItem={({item, index}) =>{
                             return (
-                            <CustomCard item={item} in={index} parentFlatList={this} deleteItem={this._deleteItem}/>
+                            <CustomCard item={item} in={index} parentFlatList={this} 
+                                        deleteItem={this._deleteItem} saveItem={this._saveItem}
+                            />
                             )
                         }}
                     />

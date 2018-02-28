@@ -32,6 +32,7 @@ class ModalEdit extends Component {
     }
 
     save(){
+        this.props.saveItem(this.state, this.props.item.key);
         this.props.hide();
     }
 

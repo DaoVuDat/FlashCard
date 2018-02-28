@@ -18,6 +18,10 @@ export default class CustomCard extends Component {
         this.props.deleteItem(index, this.props.item.key);
     }
 
+    saveItem = (data, key) => {
+        this.props.saveItem(data, key);
+    }
+
     renderItem(){
         return (
             <View style = {{flex: 6, alignItems:'center', justifyContent:'center',}}>        
@@ -58,6 +62,7 @@ export default class CustomCard extends Component {
                     hide={this._toggleModal}
                     item = {this.props.item}
                     deleteItem={this.deleteItem}
+                    saveItem={this.saveItem}
                     index = {this.props.in}
                 />
             </View>
