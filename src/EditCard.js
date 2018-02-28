@@ -81,11 +81,14 @@ class EditCard extends Component {
         if(foundIndex < 0 ){
             return
         }
+
+        let arrSentence = this._stringToArray(data.examples);
+
         preData[foundIndex].en = data.word;
         preData[foundIndex].meaning[0].type = data.type;
-        preData[foundIndex].meaning[0].sentence = data.examples;
+        preData[foundIndex].meaning[0].sentence = arrSentence;
         preData[foundIndex].meaning[0].vn = data.meaning;
-        
+
         this.setState({
             data: preData
         })
