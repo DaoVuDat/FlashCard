@@ -11,6 +11,7 @@ class EditCard extends Component {
     constructor(props){
         super(props)
         this.state = {
+            data: null,
             deletedRowKey: null,
             isModalVisible: false,
         }
@@ -30,10 +31,52 @@ class EditCard extends Component {
         })
     }
     
+    _addItem = (item) => {
+        let length = this.state.data.length;
+        console.log(length);
+        let keyGenerate = this.state.data[length-1].key;
+        
+        let keyGenerateToInt = parseInt(keyGenerate);
+        
+        let arraySentence = this._stringToArray(item.examples);
+
+        let itemAdding = {
+            key: (++keyGenerateToInt).toString(),
+            en: item.word,
+            mark:"false",
+            meaning:[
+                {
+                    type:item.type,
+                    sentence:arraySentence,
+                    vn:item.meaning
+                }
+            ]
+        }
+        let dataAdded = this.state.data;
+        dataAdded.push(itemAdding);
+        this.setState({
+            data: dataAdded
+        })
+
+        this._refreshFlatList(itemAdding.key)
+    }
+
     _deleteItem = (index, key) => {
         //this.props parentFLatList ... phai chay truoc khi xoa - neu khong se bao loi set State chi duoc khi component do mount hay mounting
         this._refreshFlatList(key)
         dataSource.splice(index,1);
+    }
+
+    _stringToArray(str){
+        let arrayStr = str.split("\n");
+        return arrayStr;
+
+    }
+
+    componentWillMount(){
+        this.setState({
+            data: dataSource
+        })
     }
 
     render(){
@@ -48,7 +91,7 @@ class EditCard extends Component {
                 </View> 
                 <View style ={{flex:10}}>
                     <FlatList
-                        data={dataSource}
+                        data={this.state.data}
                         //extra Data will make flat list re-render depending on deletedRowKey
                         extraData={this.state.deletedRowKey}
                         keyExtractor={this._keyExtractor}
@@ -69,6 +112,7 @@ class EditCard extends Component {
                 <ModalAdd 
                     isVisible={this.state.isModalVisible}
                     hide={this._toggleModal}
+                    addItem = {this._addItem}
                 />
             </View>
         );

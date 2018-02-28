@@ -14,6 +14,18 @@ class ModalEdit extends Component {
         }
     }
 
+
+    addItem(){
+        this.props.addItem(this.state);
+        this.props.hide();
+        this.setState({
+            word: "",
+            type:"",
+            meaning:"",
+            examples:""
+        })
+    }
+
     render(){
         return(
             <Modal 
@@ -70,7 +82,7 @@ class ModalEdit extends Component {
                         </View>
                         <Button 
                             style={styles.button} 
-                            onPress={this.props.hide}
+                            onPress={() => this.addItem()}
                         >
                             <Text style ={{fontFamily:'Ubuntu-Bold', color:'#FFF'}}> Add this card to list </Text>
                         </Button>

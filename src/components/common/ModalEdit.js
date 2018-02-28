@@ -31,11 +31,34 @@ class ModalEdit extends Component {
 
     }
 
+    save(){
+        this.props.hide();
+    }
+
+    componentWillMount(){
+        let exampleStr = this.exampleToString(this.props.item.meaning[0].sentence);
+
+        this.setState({
+            word: this.props.item.en,
+            type: this.props.item.meaning[0].type,
+            meaning: this.props.item.meaning[0].vn,
+            examples: exampleStr
+        })
+    }
+
+    exampleToString(example){  
+        if(example.length<2){
+            return example.toString()
+        }
+        else
+            return example.join("\n");
+
+    }
+
     render(){
         return(
             <Modal 
                 isVisible={this.props.isVisible}
-                onBackdropPress={this.props.hide}
                 onBackButtonPress={this.props.hide}
             >
                 <ScrollView showsVerticalScrollIndicator={false}>
@@ -45,7 +68,7 @@ class ModalEdit extends Component {
                             <View style={{margin:15}}>
                                 <Text style={{fontFamily:'Ubuntu-Bold', fontSize:20}}>Word</Text>
                                 <TextInput
-                                    maxLength={15}
+                                    maxLength={20}
                                     onChangeText={ (word) => this.setState({word})}
                                     value={this.state.word}
                                     placeholder="hello"
@@ -66,7 +89,7 @@ class ModalEdit extends Component {
                             <View style={{margin:15}}>
                                 <Text style={{fontFamily:'Ubuntu-Bold', fontSize:20}}>Meaning</Text>
                                 <TextInput
-                                    maxLength={15}
+                                    multiline={true}
                                     onChangeText={ (meaning) => this.setState({meaning})}
                                     value={this.state.meaning}
                                     placeholder="xin chào"
@@ -87,7 +110,7 @@ class ModalEdit extends Component {
                         </View>
                         <Button 
                             style={styles.button1} 
-                            onPress={this.props.hide}
+                            onPress={()=> this.save()}
                         >
                             <Text style ={{fontFamily:'Ubuntu-Bold', color:'#FFF'}}> Save </Text>
                         </Button>
