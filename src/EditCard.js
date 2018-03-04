@@ -62,10 +62,10 @@ class EditCard extends Component {
     }
 
     // string to array function for _addItem func  
-    _stringToArray(str){
-        let arrayStr = str.split("\n");
-        return arrayStr;
-    }
+    // _stringToArray(str){
+    //     let arrayStr = str.split("\n");
+    //     return arrayStr;
+    // }
 
     // it wont work when restarting the application
     // more care about when attach with redux
@@ -82,11 +82,11 @@ class EditCard extends Component {
             return ;
         }
 
-        let arrSentence = this._stringToArray(data.examples);
+        // let arrSentence = this._stringToArray(data.examples);
 
         preData[foundIndex].en = data.word;
         preData[foundIndex].meaning[0].type = data.type;
-        preData[foundIndex].meaning[0].sentence = arrSentence;
+        preData[foundIndex].meaning[0].sentence = data.examples;
         preData[foundIndex].meaning[0].vn = data.meaning;
         this._refreshFlatList(key);
         this.setState({
@@ -94,7 +94,7 @@ class EditCard extends Component {
         })
     }
 
-    componentWillMount(){
+    componentDidMount(){
         this.setState({
             data: dataSource
         })

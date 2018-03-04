@@ -9,7 +9,6 @@ export default class CustomCardLearning extends Component {
         this.animatedValue = new Animated.Value(0)
         this.state = {
             expanded:false,
-            click:false
         }
     }
 
@@ -71,7 +70,7 @@ export default class CustomCardLearning extends Component {
     // Render Button Mark
     renderButtonMark(){
         return (
-            <ButtonMark onPress={()=>this.setState({click: !this.state.click})} click={this.state.click}>Mark Learn</ButtonMark>
+            <ButtonMark onPress={()=>this.setState({click: !this.state.click})} click={this.props.data.mark}>Mark Learn</ButtonMark>
         )
     }
 

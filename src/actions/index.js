@@ -1,8 +1,25 @@
-import {ADD_CARD, DELETE_CARD} from './actionTypes';
+import {
+    ADD_CARD, 
+    DELETE_CARD,
+    LOAD_DEFAULT_DEMO,
+    MARK_LEARNED,
+    SAVE_LOCAL
+} from './listWords';
 
-export const addACard = (object) => {
+export function addACard(cardObject) {
     return {
         type: ADD_CARD,
-        data: object
+        cardObject
     }
+}
+
+export function deleteACard(key) {
+    return {
+        type: DELETE_CARD,
+        key
+    }
+}
+
+export function loadDefaultData(data) {
+    
 }
