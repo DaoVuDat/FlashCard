@@ -53,8 +53,9 @@ export default class CustomCardLearning extends Component {
 
     // Render sentence - example of that word
     renderMid(){
+        let arr = this.stringToArray(this.props.data.meaning[0].sentence)
         return(
-            this.props.data.meaning[0].sentence.map( (item,index) => {
+            arr.map( (item,index) => {
                 return (
                     <View key ={index} style={{flexDirection:'row', marginTop:5}}>
                         <View style={{paddingTop:5}}>
@@ -96,6 +97,12 @@ export default class CustomCardLearning extends Component {
         }
     }
 
+    stringToArray(str){
+        let arr = str.split("\n");
+    
+        return arr;
+    }
+    
     render(){
         //Animate translate
         const movingMargin = this.animatedValue.interpolate({

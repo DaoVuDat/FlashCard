@@ -17,9 +17,17 @@ const DetailCard = (props) => {
     
 }
 
+function stringToArray(str){
+    let arr = str.split("\n");
+
+    return arr;
+}
+
+
 function renderMoreExample(item){
+    let arr = stringToArray(item.sentence); 
     return (
-        item.sentence.map( (item,index) =>{
+        arr.map( (item,index) =>{
             return (
                 <View key ={index} style={{flexDirection:'row', margin:5, marginLeft:10}}>
                     <View style={{paddingTop:5}}>

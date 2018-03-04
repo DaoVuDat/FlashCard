@@ -6,17 +6,17 @@ var data=  [
       "meaning":[
         {
           "type":"verb",
-          "sentence":["Hello. How are you?","Hi. ANC?"],
+          "sentence":"Hello. How are you? \nHi. ANC?",
           "vn":"xin chào"
         },
         {
           "type":"noun",
-          "sentence":["Hello. How are you?", "I am fine. Thank you, and you?"],
+          "sentence":"Hello. How are you? \nI am fine. Thank you, and you?",
           "vn":"nghe nhạc"
         },
         {
           "type":"adjective",
-          "sentence":["Beat it - Michael Jackson.","Dota 2 Gosubet."],
+          "sentence":"Beat it - Michael Jackson. \nDota 2 Gosubet.",
           "vn":"khỏe"
         }
       ]
@@ -28,7 +28,7 @@ var data=  [
       "meaning":[
         {
           "type":"noun",
-          "sentence":["Asteriud is a minor planet that moves around the sun.","Astronomers had accidentally caught a comet in the act of turning into an asteroid."],
+          "sentence":"Asteriud is a minor planet that moves around the sun. \nAstronomers had accidentally caught a comet in the act of turning into an asteroid.",
           "vn":"hành tính nhỏ"
         }
       ]
@@ -40,7 +40,7 @@ var data=  [
       "meaning":[
         {
           "type":"noun",
-          "sentence":["The atmostphere is a layer of gases surrounding the Earth.","Not so long ago he had been uncomfortable in the atmosphere of the seemingly unbridled physicality of Dunham dancing."],
+          "sentence":"The atmostphere is a layer of gases surrounding the Earth. \nNot so long ago he had been uncomfortable in the atmosphere of the seemingly unbridled physicality of Dunham dancing.",
           "vn":"môi trường"
         }
       ]
@@ -52,7 +52,7 @@ var data=  [
       "meaning":[
         {
           "type":"verb",
-          "sentence":["India was colonized by the British in the eighteenth century."],
+          "sentence":"India was colonized by the British in the eighteenth century.",
           "vn":"chiếm làm thuộc địa"
         }
       ]
@@ -64,7 +64,7 @@ var data=  [
       "meaning":[
         {
           "type":"adjective",
-          "sentence":["Commercial flights from Earth to Mars may be available within 30 years."],
+          "sentence":"Commercial flights from Earth to Mars may be available within 30 years.",
           "vn":"thuộc làm thương mại"
         }
       ]
@@ -76,7 +76,7 @@ var data=  [
       "meaning":[
         {
           "type":"noun",
-          "sentence":["There are plenty of planets in the cosmos besides Earth.","But when change was in focus, the issue became the unifying and dividing forces which applied to the entire cosmos."],
+          "sentence":"There are plenty of planets in the cosmos besides Earth. \nBut when change was in focus, the issue became the unifying and dividing forces which applied to the entire cosmos.",
           "vn":"vũ trụ"
         }
       ]
@@ -88,7 +88,7 @@ var data=  [
       "meaning":[
         {
           "type":"noun",
-          "sentence":["This crater is the result of a meteorite crash in 1980.","The meteor left a crater over five miles wide.","When the bomb exploded it left a huge crater in the ground."],
+          "sentence":"This crater is the result of a meteorite crash in 1980. \nThe meteor left a crater over five miles wide. \nWhen the bomb exploded it left a huge crater in the ground.",
           "vn":"hố"
         }
       ]

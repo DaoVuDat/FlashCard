@@ -37,24 +37,15 @@ class ModalEdit extends Component {
     }
 
     componentWillMount(){
-        let exampleStr = this.exampleToString(this.props.item.meaning[0].sentence);
 
         this.setState({
             word: this.props.item.en,
             type: this.props.item.meaning[0].type,
             meaning: this.props.item.meaning[0].vn,
-            examples: exampleStr
+            examples: this.props.item.meaning[0].sentence
         })
     }
 
-    exampleToString(example){  
-        if(example.length<2){
-            return example.toString()
-        }
-        else
-            return example.join("\n");
-
-    }
 
     render(){
         return(

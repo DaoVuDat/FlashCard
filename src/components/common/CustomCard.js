@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
-import SwipeOut from 'react-native-swipeout'
 import ModalEdit from './ModalEdit'
 export default class CustomCard extends Component {
     constructor(props){

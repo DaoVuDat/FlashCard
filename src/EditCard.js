@@ -79,7 +79,7 @@ class EditCard extends Component {
         let preData = this.state.data;
         let foundIndex = preData.findIndex(item => key == item.key);
         if(foundIndex < 0 ){
-            return
+            return ;
         }
 
         let arrSentence = this._stringToArray(data.examples);
@@ -88,7 +88,7 @@ class EditCard extends Component {
         preData[foundIndex].meaning[0].type = data.type;
         preData[foundIndex].meaning[0].sentence = arrSentence;
         preData[foundIndex].meaning[0].vn = data.meaning;
-
+        this._refreshFlatList(key);
         this.setState({
             data: preData
         })
